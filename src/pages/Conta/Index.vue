@@ -1,28 +1,30 @@
 <template>
   <div class="q-pa-md">
-    <div class="q-gutter-y-md column  card">
-      <q-input rounded outlined placeholder="Nome" v-model="expense.name">
+    <div class="q-gutter-y-md column card" :style="theme.card">
+      <q-input :dark="theme.dark" :color="theme.dark ? 'cyan-14' : ''" rounded outlined label="Nome" v-model="expense.name">
         <template v-slot:append>
           <q-avatar>
             <q-icon name="insert_comment" />
           </q-avatar>
         </template>
       </q-input>
-      <q-input rounded outlined placeholder="R$" type="tel" v-model="expense.amount">
+      <q-input :dark="theme.dark" :color="theme.dark ? 'cyan-14' : ''" rounded outlined placeholder="R$" type="tel" mask="#.##"
+        fill-mask="0" reverse-fill-mask v-model="expense.amount"
+        label="R$">
         <template v-slot:append>
           <q-avatar>
             <q-icon name="monetization_on" />
           </q-avatar>
         </template>
       </q-input>
-      <q-input rounded outlined placeholder="Quantidade" type="tel" v-model="expense.quantity">
+      <q-input :dark="theme.dark" :color="theme.dark ? 'cyan-14' : ''" rounded outlined label="Quantidade" type="tel" v-model="expense.quantity">
         <template v-slot:append>
           <q-avatar>
             <q-icon name="add_circle" />
           </q-avatar>
         </template>
       </q-input>
-      <q-input rounded outlined placeholder="DD/MM/YYYY" v-model="expense.date">
+      <q-input :dark="theme.dark" :color="theme.dark ? 'cyan-14' : ''" rounded outlined label="DD/MM/YYYY" v-model="expense.date">
         <template v-slot:append>
           <q-avatar>
             <q-icon name="insert_invitation" />
@@ -45,8 +47,6 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import { convert } from '../../utils/filters'
-import products from '../../services/products'
-import { addStorage } from '../../persistence/localStorage'
 export default {
   name: 'PageIndex',
   mixins: [convert],
@@ -57,12 +57,13 @@ export default {
         name: '',
         amount: '',
         quantity: '',
-        date: ''
+        date: this.hoje()
       }
     }
   },
   computed: {
     ...mapState('Conta', ['list']),
+    ...mapState('Config', ['theme']),
     statusButton () {
       if (
         this.expense.name === '' ||
@@ -78,23 +79,21 @@ export default {
   },
   methods: {
     ...mapActions('Conta', ['setConta']),
-    save () {
-      addStorage('Conta', this.expense)
+    async save () {
       this.setConta(this.expense)
-      const cloned = JSON.parse(JSON.stringify(this.expense))
-      this.store(cloned)
       this.reset()
     },
-    async store (data) {
-      await products.create(data).then(res => {
-        console.log(res)
-      })
-    },
     reset () {
-      this.expense.name = ''
-      this.expense.amount = ''
-      this.expense.quantity = ''
-      this.expense.date = ''
+      setTimeout(function () {
+        this.expense.name = ''
+        this.expense.amount = ''
+        this.expense.quantity = ''
+        this.expense.date = ''
+      }, 500)
+    },
+    hoje () {
+      const hoje = new Date()
+      return hoje.toLocaleDateString()
     }
   }
 }

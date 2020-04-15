@@ -1,15 +1,14 @@
-import { addConta } from '../../../persistence/'
 import { uid } from 'quasar'
+import { getConta } from '../../../persistence/localForage'
 
 const setConta = ({ commit }, obj) => {
-  const cloned = JSON.parse(JSON.stringify(obj))
-  cloned.id = uid()
-  addConta(cloned)
+  obj.id = uid()
   commit('ADD_CONTA', obj)
 }
 
-const dropConta = ({ commit }, obj) => {
+const dropConta = async ({ commit }, obj) => {
   commit('REMOVE_CONTA', obj)
+  await getConta()
 }
 
 export default {

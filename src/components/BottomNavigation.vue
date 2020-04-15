@@ -8,7 +8,7 @@
             <q-tab name="menu" @click="show(true)">
               <q-btn fab icon="attach_money" color="accent"/>
             </q-tab>
-            <q-route-tab name="config" to="">
+            <q-route-tab name="config" :to="{name: 'config'}">
               <i class="icofont-ui-settings"></i>
               Config
             </q-route-tab>

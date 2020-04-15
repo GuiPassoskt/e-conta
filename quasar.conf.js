@@ -18,11 +18,12 @@ module.exports = function (ctx) {
 
     extras: [
       'roboto-font',
-      'material-icons' // optional, you are not bound to it
+      'material-icons', // optional, you are not bound to it
       // 'ionicons-v4',
       // 'mdi-v3',
       // 'fontawesome-v5',
       // 'eva-icons'
+      'line-awesome'
     ],
 
     framework: {
@@ -49,7 +50,8 @@ module.exports = function (ctx) {
         'QSeparator',
         'QBadge',
         'QDate',
-        'QPopupProxy'
+        'QPopupProxy',
+        'QToggle'
       ],
 
       directives: [
@@ -61,7 +63,7 @@ module.exports = function (ctx) {
       plugins: [
         'Notify',
         'AddressbarColor',
-        'BottomSheet',
+        'Dialog',
         'LocalStorage'
       ]
 

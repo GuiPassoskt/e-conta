@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated :style="theme.header">
       <q-toolbar>
         <q-btn flat dense @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <i class="icofont-navigation-menu"></i>
@@ -10,7 +10,7 @@
         </q-toolbar-title>
         <q-btn flat dense :to="{name:'lista'}">
           <q-badge color="red" floating transparent v-if="badge !== 0">{{badge}}</q-badge>
-          <i class="icofont-food-basket"></i>
+          <i class="las la-shopping-basket"></i>
         </q-btn>
       </q-toolbar>
     </q-header>
@@ -18,56 +18,16 @@
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
-      content-class="bg-grey-2"
+      :content-class="theme.dark ? 'bg-dark-2' : 'bg-grey-2'"
     >
     <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 0px solid #ddd">
         <q-list padding>
-          <q-item clickable tag="a" :to="{name:'tvonline'}">
+          <q-item clickable tag="a" :to="{name:''}">
             <q-item-section avatar>
-             <television />
+             <i class="las la-tv"></i>
             </q-item-section>
             <q-item-section>
               <q-item-label>Tv On-line</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable tag="a" :to="{name:'lista'}">
-            <q-item-section avatar>
-             <programation />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Programação Tv</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable tag="a" :to="{name:'config'}">
-            <q-item-section avatar>
-              <journal />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Notícias</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable tag="a" :to="{name:'redes_sociais'}">
-            <q-item-section avatar>
-              <social />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Redes Sociais</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable tag="a" :to="{name:'contatos'}">
-            <q-item-section avatar>
-              <contacts />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Contatos</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable tag="a" :to="{name:'ficha_tecnica'}">
-            <q-item-section avatar>
-              <info />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Ficha Técnica</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>
@@ -75,7 +35,7 @@
       <q-img class="absolute-top" style='background-size: cover; background-position: 50% 50%;height: 150px'>
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="60px" class="q-mb-sm avatar">
-            <img src="https://guipassoskt.github.io/wp-content/uploads/2015/09/eu.jpg">
+            <img src="~/assets/eu.jpg" style="object-fit:cover;">
           </q-avatar>
           <div class="text-weight-bold">Guilherme Passos</div>
           <div>decodezero.io@gmail.com</div>
@@ -83,53 +43,36 @@
       </q-img>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container :style="{paddingTop: '80px'}">
       <router-view />
-      <bottom-navigation />
     </q-page-container>
+    <bottom-navigation />
   </q-layout>
 </template>
 
 <script>
 import { openURL } from 'quasar'
-import BottomNavigation from '../components/BottomNavigation'
-import Television from '../components/Icons/Television'
-import Programation from '../components/Icons/Programation'
-import Journal from '../components/Icons/Journal'
-import Social from '../components/Icons/Social'
-import Contacts from '../components/Icons/Contacts'
-import Info from '../components/Icons/Info'
+import BottomNavigation from '../components/BottomNavigationSvg'
 import { mapState } from 'vuex'
-import { getConta } from '../persistence/'
 export default {
   name: 'MyLayout',
   components: {
-    BottomNavigation,
-    Television,
-    Programation,
-    Journal,
-    Social,
-    Contacts,
-    Info
+    BottomNavigation
   },
   computed: {
     ...mapState('Conta', ['list']),
+    ...mapState('Config', ['theme']),
     badge () {
       return this.list.length
     }
   },
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop,
-      count: null
+      leftDrawerOpen: this.$q.platform.is.desktop
     }
   },
   methods: {
     openURL
-  },
-  mounted () {
-    const b = getConta()
-    console.log('array', b)
   }
 }
 </script>
@@ -144,5 +87,12 @@ export default {
 .title {
   font-weight: bold;
   font-family: 'Playball', cursive;
+}
+.bg-dark-2 {
+  background: #292b4d;
+  border: none;
+}
+.q-drawer {
+  background: transparent;
 }
 </style>

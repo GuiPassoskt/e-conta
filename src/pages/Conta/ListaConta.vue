@@ -1,17 +1,17 @@
 <template>
   <div class="q-pa-md" style="350px">
-    <q-list v-for="l in lista" :key="l.id">
-      <q-item>
+    <q-list v-for="l in list" :key="l.id">
+      <q-item :style="theme.card">
         <q-item-section>
           <q-item-label>Produto: {{l.name}}</q-item-label>
           <q-item-label>Valor: R$ {{l.amount | monetize}}</q-item-label>
-          <q-item-label caption lines="2">Quantidade: {{l.quantity}}</q-item-label>
+          <q-item-label :style="{color:theme.card.color}" caption lines="2">Quantidade: {{l.quantity}}</q-item-label>
         </q-item-section>
 
         <q-item-section side top>
-          <q-item-label caption>{{l.date | repl_data}}</q-item-label>
+          <q-item-label :style="{color: theme.card.color}" caption>{{l.date | repl_data}}</q-item-label>
           <q-btn flat dense class="q-mt-sm" color="red" @click.prevent="remove(l)">
-            <i class="icofont-trash"></i>
+            <i class="las la-trash" :style="{color: theme.card.icons}"></i>
           </q-btn>
         </q-item-section>
       </q-item>
@@ -19,34 +19,29 @@
       <q-separator spaced inset />
 
     </q-list>
+    <div style="height:100px"></div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { getConta, removeConta } from '../../persistence/'
+import { mapActions, mapState } from 'vuex'
 import { convert } from '../../utils/filters'
 export default {
   mixins: [convert],
   data () {
     return {
-      lista: null
+      count: 0
     }
   },
   computed: {
-    ...mapState('Conta', ['list'])
+    ...mapState('Conta', ['list']),
+    ...mapState('Config', ['theme'])
   },
   methods: {
     ...mapActions('Conta', ['dropConta']),
     async remove (item) {
-      await removeConta(item)
       await this.dropConta(item)
-      this.lista = await getConta()
     }
-  },
-  mounted () {
-    const listx = getConta()
-    this.lista = listx
   }
 }
 </script>

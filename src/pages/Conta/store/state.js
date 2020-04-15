@@ -1,3 +1,5 @@
+import { getConta } from '../../../persistence/localForage'
+
 export default {
-  list: []
+  list: getConta() || []
 }

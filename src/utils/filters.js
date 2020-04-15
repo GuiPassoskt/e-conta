@@ -21,5 +21,13 @@ export const convert = {
       if (!value) return ''
       return value.replace('-', '/').replace('-', '/')
     }
+  },
+  methods: {
+    currency (value) {
+      if (!value) return '0,00'
+      value = parseFloat(value).toFixed(2)
+      value = value.toString()
+      return 'R$ ' + value.replace('.', ',')
+    }
   }
 }

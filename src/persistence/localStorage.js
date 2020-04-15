@@ -1,14 +1,11 @@
-import { uid } from 'quasar'
-
 export function addStorage (name, item) {
   let db = JSON.parse(window.localStorage.getItem(name)) || []
-  item.id = uid()
   db.push(item)
   window.localStorage.setItem(name, JSON.stringify(db))
 }
 
 export function getStorage (name) {
-  return window.localStorage.getItem(name)
+  return JSON.parse(window.localStorage.getItem(name)) || []
 }
 
 export function updateStorage (name, id, item) {
@@ -19,12 +16,13 @@ export function updateStorage (name, id, item) {
   window.localStorage.setItem(name, JSON.stringify(rewrite))
 }
 
-export function removeStorage (name, id) {
-  const db = JSON.parse(window.localStorage.getItem(name))
-  if (db.length === 0) return
-  const rewrite = db.filter(item => item.id !== id)
-  window.localStorage.setItem(name, JSON.stringify(rewrite))
+export function removeStorage (name, item) {
+  let db = []
+  db.push(item)
+  window.localStorage.setItem(name, JSON.stringify(db))
 }
 
+window.addStorage = addStorage
+window.getStorage = getStorage
 window.removeStorage = removeStorage
 window.updateStorage = updateStorage

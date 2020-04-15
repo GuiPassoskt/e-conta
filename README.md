@@ -1,19 +1,26 @@
-# Quasar App
+# Quasar Template (quasar-template)
 
-> WIP
+Layout Example with Quasar
 
-Comandos:
-
-Assinatura =>
-
-```
- jarsigner.exe -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore D:\my-release-key.keystore D:\0.PIMPA\APLICATIVOS\QUASAR_WORKSPACE\e-conta\src-cordova\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk decodezero
-
+## Install the dependencies
+```bash
+npm install
 ```
 
-Zip => 
-
+### Start the app in development mode (hot-code reloading, error reporting, etc.)
+```bash
+quasar dev
 ```
-zipalign -f -v 4 D:\0.PIMPA\APLICATIVOS\QUASAR_WORKSPACE\e-conta\src-cordova\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk D:\0.PIMPA\APLICATIVOS\QUASAR_WORKSPACE\e-conta\src-cordova\platforms\android\app\build\outputs\apk\release\E-Conta.apk
 
+### Lint the files
+```bash
+npm run lint
 ```
+
+### Build the app for production
+```bash
+quasar build
+```
+
+### Customize the configuration
+See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).

@@ -80,7 +80,6 @@ export default {
   methods: {
     ...mapActions('Conta', ['setConta']),
     async save () {
-<<<<<<< HEAD
       await this.setConta(this.expense)
       await this.reset()
     },
@@ -89,18 +88,6 @@ export default {
       this.expense.amount = ''
       this.expense.quantity = ''
       this.expense.date = ''
-=======
-      this.setConta(this.expense)
-      this.reset()
-    },
-    reset () {
-      setTimeout(function () {
-        this.expense.name = ''
-        this.expense.amount = ''
-        this.expense.quantity = ''
-        this.expense.date = ''
-      }, 500)
->>>>>>> bdbd256f0537ab4f582e1a1ff2f134a1c350e2d4
     },
     hoje () {
       const hoje = new Date()

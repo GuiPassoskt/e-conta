@@ -1,0 +1,74 @@
+{
+    "data": [
+        // Curso
+        {
+            "idcompra_item": 13,
+            "produto_idproduto": 13,
+            "preco": 16.7,
+            "compra_idcompra": null,
+            "usuario_idusuario": 10009,
+            "data_criacao": "2019-06-12 11:44:38",
+            "produto": {
+                "idproduto": 13,
+                "curso_idcurso": 162,
+                "material_apoio_idmaterial_apoio": null,
+                "material_apoio": null,
+                "curso": {
+                    "idcurso": 162,
+                    "imagem": "https://donadviceweb.s3.amazonaws.com/teste/cursos/imagens/162/tj4mexWZwy4YE44rIO98dvPPnYOGjaemFE3IVbZg.jpeg",
+                    "nome": "Automovel",
+                    "descricao": "AUtomovel",
+                    "objetivo": "AUtomovel",
+                    "aprendizado": "AUtomovel",
+                    "idusuario_criador": 10007,
+                    "curso_idcurso_pre_requisito": 152,
+                    "ativo": 1,
+                    "prazo": 30
+                }
+            }
+        },
+        // Material de Apoio
+        {
+            "idcompra_item": 21,
+            "produto_idproduto": 34,
+            "preco": 13.1,
+            "compra_idcompra": null,
+            "usuario_idusuario": 10007,
+            "data_criacao": "2019-06-12 16:05:46",
+            "produto": {
+                "idproduto": 34,
+                "curso_idcurso": null,
+                "material_apoio_idmaterial_apoio": 360,
+                "material_apoio": {
+                    "idmaterial_apoio": 360,
+                    "nome": "TGL CONTÁBIL",
+                    "descricao": "Apresentação Institucional TGL Contábil",
+                    "ativo": "1",
+                    "curso_idcurso": 158,
+                    "deleted_at": null,
+                    "conteudo": {
+                        "idconteudo": 1906,
+                        "conteudo": "Apresentação Institucional TGL Contábil",
+                        "tipo": "V",
+                        "caminho": "materiais_de_apoio/360/C9CYLqzhxqK4aqp9uv5fnDjFwRSRbDjEBXEeWjCj.mp4",
+                        "aula_idaula": null,
+                        "prova_idprova": null,
+                        "ordem": 1,
+                        "idusuario_criador": 10024,
+                        "material_apoio_idmaterial_apoio": 360,
+                        "questao_idquestao": null,
+                        "data_criacao": "2019-06-01 23:36:16",
+                        "deleted_at": null,
+                        "url_caminho": "http://ead/api/conteudo/1906/video?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM4Mjk2N2Q2YmY3MTkzM2JiM2VkMjgxNmFjNzc5ZTQxNTYxOTc1ODIwNjNlYTYwOWZhODQyN2YyYzc2OTA4ZTI0OGVlYzBlZmZjNzYwYTFiIn0.eyJhdWQiOiI5IiwianRpIjoiMzgyOTY3ZDZiZjcxOTMzYmIzZWQyODE2YWM3NzllNDE1NjE5NzU4MjA2M2VhNjA5ZmE4NDI3ZjJjNzY5MDhlMjQ4ZWVjMGVmZmM3NjBhMWIiLCJpYXQiOjE1NjAzNTk1NDMsIm5iZiI6MTU2MDM1OTU0MywiZXhwIjoxNTkxOTgxOTQzLCJzdWIiOiIxMDAwNyIsInNjb3BlcyI6W119.Cv6Uin84ikuYuCBt9efTbchBm0lxziAcmF0KUpbh1QXD5LTGTaZ9976piB2amNGBcmSH2Ly1LVJfNbHUfKRvVe1UC30N0gWSB_TGNhJZGPrBq314fLpCgRaeo6zcAoI2bsjnvVeveaN41SWoTFoPPdgI197uDZ30Q0Kml4NFGqVHDm91RcdC0MyQ88PO1qG2eaYL3JZh3q0GsAhHQwF-iKTLea46SrY1pU6m5_I7DxI8kUzUvrvSjgpQaxS1QhCSZvoJ2UguaEXfND5Lr-dAdoANFhuAemdaLpk3fLpbqMY2VL15l35OawgNIx5dzYecUWHecFcA7P7Acuvl1w2k5KhRY3-rtoVEqy3OoCWobJhUx0O7s3tws5fbPcNYZOh9f1IlcvAAqj0TiH3cqbNxIGVdYMRmL5qP2JDmHexTYBZODq5Z7O31648snoyMsJYXYfZ5h1WIyrfOTyPKs568mt4Jg4SmjmSi7yNPXvLmmHND0VaO38I7-P7jT6GvFfJ__IQ37EktHZQToSfJK7IsBwMtKhxWyagzO103YQDA0CRv6HygHSOyyAZic9UDSyTJkcHmSUO1oN7v5Em5P3L7rZb7Cez9SHAf1kTppiHOBPiHcvLFfn0AVzTXdP2o2VjLWOIlbt07YCptbZUpcPu8As6dKrRkiJeHKFdinK6nWJo",
+                        "nome_tipo": "video",
+                        "url_download": "http://ead/api/conteudo/1906/download?access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM4Mjk2N2Q2YmY3MTkzM2JiM2VkMjgxNmFjNzc5ZTQxNTYxOTc1ODIwNjNlYTYwOWZhODQyN2YyYzc2OTA4ZTI0OGVlYzBlZmZjNzYwYTFiIn0.eyJhdWQiOiI5IiwianRpIjoiMzgyOTY3ZDZiZjcxOTMzYmIzZWQyODE2YWM3NzllNDE1NjE5NzU4MjA2M2VhNjA5ZmE4NDI3ZjJjNzY5MDhlMjQ4ZWVjMGVmZmM3NjBhMWIiLCJpYXQiOjE1NjAzNTk1NDMsIm5iZiI6MTU2MDM1OTU0MywiZXhwIjoxNTkxOTgxOTQzLCJzdWIiOiIxMDAwNyIsInNjb3BlcyI6W119.Cv6Uin84ikuYuCBt9efTbchBm0lxziAcmF0KUpbh1QXD5LTGTaZ9976piB2amNGBcmSH2Ly1LVJfNbHUfKRvVe1UC30N0gWSB_TGNhJZGPrBq314fLpCgRaeo6zcAoI2bsjnvVeveaN41SWoTFoPPdgI197uDZ30Q0Kml4NFGqVHDm91RcdC0MyQ88PO1qG2eaYL3JZh3q0GsAhHQwF-iKTLea46SrY1pU6m5_I7DxI8kUzUvrvSjgpQaxS1QhCSZvoJ2UguaEXfND5Lr-dAdoANFhuAemdaLpk3fLpbqMY2VL15l35OawgNIx5dzYecUWHecFcA7P7Acuvl1w2k5KhRY3-rtoVEqy3OoCWobJhUx0O7s3tws5fbPcNYZOh9f1IlcvAAqj0TiH3cqbNxIGVdYMRmL5qP2JDmHexTYBZODq5Z7O31648snoyMsJYXYfZ5h1WIyrfOTyPKs568mt4Jg4SmjmSi7yNPXvLmmHND0VaO38I7-P7jT6GvFfJ__IQ37EktHZQToSfJK7IsBwMtKhxWyagzO103YQDA0CRv6HygHSOyyAZic9UDSyTJkcHmSUO1oN7v5Em5P3L7rZb7Cez9SHAf1kTppiHOBPiHcvLFfn0AVzTXdP2o2VjLWOIlbt07YCptbZUpcPu8As6dKrRkiJeHKFdinK6nWJo"
+                    }
+                },
+                "curso": null
+            }
+        }
+    ],
+
+    "message": "OK",
+    "status": 200
+}

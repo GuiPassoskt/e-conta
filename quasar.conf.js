@@ -27,7 +27,11 @@ module.exports = function (ctx) {
     ],
 
     framework: {
+<<<<<<< HEAD
       importStrategy: true, // --- includes everything; for dev only!
+=======
+      // all: true, // --- includes everything; for dev only!
+>>>>>>> bdbd256f0537ab4f582e1a1ff2f134a1c350e2d4
 
       components: [
         'QLayout',
@@ -71,7 +75,11 @@ module.exports = function (ctx) {
       // lang: 'de' // Quasar language
     },
 
+<<<<<<< HEAD
     supportIE: false,
+=======
+    supportIE: true,
+>>>>>>> bdbd256f0537ab4f582e1a1ff2f134a1c350e2d4
 
     build: {
       scopeHoisting: true,
@@ -91,8 +99,13 @@ module.exports = function (ctx) {
     },
 
     devServer: {
+<<<<<<< HEAD
       // https: true,
       // port: 3000,
+=======
+      //https: true,
+      //port: 3000,
+>>>>>>> bdbd256f0537ab4f582e1a1ff2f134a1c350e2d4
       open: true // opens browser window automatically
     },
 

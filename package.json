@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Administrador de despesas pessoais",
   "productName": "E-Conta",
+<<<<<<< HEAD
+=======
+  "cordovaId": "io.decodezero.intervals.app",
+>>>>>>> bdbd256f0537ab4f582e1a1ff2f134a1c350e2d4
   "author": "Guilherme Passos <guipassoskt@gmail.com>",
   "private": true,
   "scripts": {
@@ -13,6 +17,7 @@
   },
   "dependencies": {
     "@ionic-native/core": "^5.14.0",
+<<<<<<< HEAD
     "@quasar/extras": "^1.9.5",
     "axios": "^0.18.0",
     "core-js": "^3.0.0",
@@ -22,6 +27,16 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+=======
+    "@quasar/extras": "^1.6.0",
+    "axios": "^0.18.0",
+    "localforage": "^1.7.3",
+    "quasar": "^1.9.12",
+    "vue-i18n": "^7.3.3"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.2.3",
+>>>>>>> bdbd256f0537ab4f582e1a1ff2f134a1c350e2d4
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.10.0",
@@ -35,6 +50,7 @@
     "yarn": ">= 1.6.0"
   },
   "browserslist": [
+<<<<<<< HEAD
     "last 10 Chrome versions",
     "last 10 Firefox versions",
     "last 4 Edge versions",
@@ -45,4 +61,11 @@
     "last 10 iOS versions",
     "last 5 Opera versions"
   ]
+=======
+    "last 1 version, not dead, ie >= 11"
+  ],
+  "resolutions": {
+    "ajv": "6.8.1"
+  }
+>>>>>>> bdbd256f0537ab4f582e1a1ff2f134a1c350e2d4
 }

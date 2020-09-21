@@ -91,8 +91,8 @@ module.exports = function (ctx) {
     },
 
     devServer: {
-      // https: true,
-      // port: 3000,
+      https: true,
+      port: 8080,
       open: true // opens browser window automatically
     },
 
@@ -104,16 +104,16 @@ module.exports = function (ctx) {
     },
 
     pwa: {
-      // workboxPluginMode: 'InjectManifest',
-      // workboxOptions: {}, // only for NON InjectManifest
+      workboxPluginMode: 'GenerateSW',
+      workboxOptions: { skipWaiting: true, clientsClaim: true }, // only for NON InjectManifest
       manifest: {
-        // name: 'Quasar App',
-        // short_name: 'Quasar-PWA',
-        // description: 'Best PWA App in town!',
+        name: 'E-Conta',
+        short_name: 'E-Conta',
+        description: 'Best PWA App in town!',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
-        theme_color: '#027be3',
+        theme_color: '#021354',
         icons: [
           {
             'src': 'statics/icons/icon-128x128.png',

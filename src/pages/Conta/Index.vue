@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <div class="q-gutter-y-md column card" :style="theme.card">
+    <q-form class="q-gutter-y-md column card" @submit.prevent="save()" :style="theme.card">
       <q-input :dark="theme.dark" :color="theme.dark ? 'cyan-14' : ''" rounded outlined label="Nome" v-model="expense.name">
         <template v-slot:append>
           <q-avatar>
@@ -34,10 +34,10 @@
           </q-avatar>
         </template>
       </q-input>
-      <q-btn unelevated rounded  
+      <q-btn unelevated rounded type="submit" 
       style="background: #FF0080;color:#fff" 
-      size="lg" label="Salvar" :disable="statusButton" @click.prevent="save()"/>
-    </div>
+      size="lg" label="Salvar" :disable="statusButton" />
+    </q-form>
   </div>
 </template>
 
@@ -81,7 +81,9 @@ export default {
     ...mapActions('Conta', ['setConta']),
     async save () {
       await this.setConta(this.expense)
-      await this.reset()
+      setTimeout(() => {
+        this.reset()
+      }, 2000)
     },
     reset () {
       this.expense.name = ''

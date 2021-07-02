@@ -20,6 +20,19 @@
 
     </q-list>
     <div style="height:100px"></div>
+    <q-dialog v-model="confirm" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-avatar icon="delete" color="negative" text-color="white" />
+          <span class="q-ml-sm">Deseja excluir este item?</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cancelar" color="dark" v-close-popup />
+          <q-btn flat label="Excluir" color="negative" @click="removeConfirm()" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -30,7 +43,9 @@ export default {
   mixins: [convert],
   data () {
     return {
-      count: 0
+      count: 0,
+      confirm: false,
+      itemSelecionado: {}
     }
   },
   computed: {
@@ -39,8 +54,12 @@ export default {
   },
   methods: {
     ...mapActions('Conta', ['dropConta']),
-    async remove (item) {
-      await this.dropConta(item)
+    remove (item) {
+      this.itemSelecionado = item
+      this.confirm = true
+    },
+    async removeConfirm () {
+      await this.dropConta(this.itemSelecionado)
     }
   }
 }

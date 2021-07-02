@@ -19,23 +19,26 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapState } from 'vuex'
 import { convert } from '../utils/filters'
 export default {
   name: 'BottomNavigation',
   mixins: [convert],
   data () {
     return {
-      tab: 'mails'
+      tab: 'mails',
+      totalList: 0
     }
   },
+  props: {
+    totalProducts: {}
+  },
   computed: {
-    ...mapGetters('Conta', ['totalList']),
     ...mapState('Config', ['theme'])
   },
   methods: {
     show () {
-      let total = this.currency(this.totalList || 0.00)
+      let total = this.currency(this.totalProducts || 0.00)
       this.$q.dialog({
         title: `<div style="margin: 0 auto;text-align: center;width: 100%;display: flex;flex-direction: column;">
                   <i class="icofont-food-basket" style="width: 80px;height: 80px;display: flex;justify-content: center;align-items: center;margin: 0 auto;background: #edf3f8;border-radius: 50%;"></i>

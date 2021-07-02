@@ -45,7 +45,7 @@
 </style>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import { convert } from '../../utils/filters'
 export default {
   name: 'PageIndex',
@@ -53,16 +53,15 @@ export default {
   data () {
     return {
       expense: {
-        id: '',
         name: '',
         amount: '',
         quantity: '',
         date: this.hoje()
-      }
+      },
+      collection: 'expense'
     }
   },
   computed: {
-    ...mapState('Conta', ['list']),
     ...mapState('Config', ['theme']),
     statusButton () {
       if (
@@ -78,14 +77,20 @@ export default {
     }
   },
   methods: {
-    ...mapActions('Conta', ['setConta']),
     async save () {
-      await this.setConta(this.expense)
-      setTimeout(() => {
-        this.reset()
-      }, 2000)
+      try {
+        await this.$db.collection(this.collection).add(this.expense)
+        await this.reset()
+        this.$q.notify({
+          message: 'Produto salvo com sucesso!',
+          color: 'positive',
+          icon: 'check'
+        })
+      } catch (error) {
+        console.error(error)
+      }
     },
-    reset () {
+    async reset () {
       this.expense.name = ''
       this.expense.amount = ''
       this.expense.quantity = ''

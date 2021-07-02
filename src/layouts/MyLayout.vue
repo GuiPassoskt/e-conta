@@ -46,7 +46,7 @@
     <q-page-container :style="{paddingTop: '80px'}">
       <router-view />
     </q-page-container>
-    <bottom-navigation />
+    <bottom-navigation :totalProducts="products"/>
   </q-layout>
 </template>
 
@@ -59,20 +59,39 @@ export default {
   components: {
     BottomNavigation
   },
-  computed: {
-    ...mapState('Conta', ['list']),
-    ...mapState('Config', ['theme']),
-    badge () {
-      return this.list.length
-    }
-  },
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      qtdProduct: 0,
+      products: [],
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      collection: 'expense'
+    }
+  },
+  computed: {
+    ...mapState('Config', ['theme']),
+    badge () {
+      return this.qtdProduct
     }
   },
   methods: {
-    openURL
+    openURL,
+    async getExpenses () {
+      const expenses = await this.$db.collection(this.collection).get()
+      this.products = this.totalProducts(expenses)
+      this.qtdProduct = expenses.length
+    },
+    totalProducts (expenses) {
+      const array = expenses.map(item => parseFloat(item.amount) * item.quantity)
+      if (array.length > 0) {
+        const total = array.reduce((total, i) => total + i)
+        return total.toFixed(2) || 0
+      } else {
+        return 0
+      }
+    }
+  },
+  mounted () {
+    this.getExpenses()
   }
 }
 </script>

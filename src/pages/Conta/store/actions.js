@@ -1,14 +1,13 @@
-import { uid } from 'quasar'
-import { getConta } from '../../../persistence/localForage'
+const collection = 'expense'
 
-const setConta = ({ commit }, obj) => {
-  obj.id = uid()
+const setConta = async ({ commit }, obj) => {
+  await window.$db.collection(collection).add(obj)
   commit('ADD_CONTA', obj)
 }
 
 const dropConta = async ({ commit }, obj) => {
+  await window.$db.collection(collection).doc(obj.id).delete()
   commit('REMOVE_CONTA', obj)
-  await getConta()
 }
 
 export default {

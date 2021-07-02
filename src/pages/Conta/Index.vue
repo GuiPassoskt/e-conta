@@ -41,9 +41,6 @@
   </div>
 </template>
 
-<style>
-</style>
-
 <script>
 import { mapState } from 'vuex'
 import { convert } from '../../utils/filters'
@@ -87,7 +84,11 @@ export default {
           icon: 'check'
         })
       } catch (error) {
-        console.error(error)
+        this.$q.notify({
+          message: error,
+          color: 'negative',
+          icon: 'close'
+        })
       }
     },
     async reset () {

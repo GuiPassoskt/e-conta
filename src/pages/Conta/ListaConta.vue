@@ -64,7 +64,11 @@ export default {
           }
         })
       } catch (error) {
-        console.error(error)
+        this.$q.notify({
+          message: error,
+          color: 'negative',
+          icon: 'close'
+        })
       }
     },
     ativarModal (item) {
@@ -82,7 +86,11 @@ export default {
         })
         this.getExpenses()
       } catch (error) {
-        console.error(error)
+        this.$q.notify({
+          message: error,
+          color: 'negative',
+          icon: 'close'
+        })
       }
     }
   },

@@ -1,15 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import Conta from '../pages/Conta/store'
-import Config from '../pages/Config/store'
+import { store } from 'quasar/wrappers'
+import { createPinia } from 'pinia'
 
-Vue.use(Vuex)
+export default store((/* { ssrContext } */) => {
+  const pinia = createPinia()
 
-const modules = {
-  Conta,
-  Config
-}
+  // You can add Pinia plugins here
+  // pinia.use(SomePiniaPlugin)
 
-export default new Vuex.Store({
-  modules
+  return pinia
 })

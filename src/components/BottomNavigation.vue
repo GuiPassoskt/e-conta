@@ -1,110 +1,88 @@
 <template>
-    <q-layout-footer class="flex">
-        <q-tabs class="text-teal" indicator-color="transparent">
-            <q-route-tab name="home" :to="{name:'criar_conta'}">
-              <i class="icofont-home"></i>
-              Home
-            </q-route-tab>
-            <q-tab name="menu" @click="show(true)">
-              <q-btn fab icon="attach_money" color="accent"/>
-            </q-tab>
-            <q-route-tab name="config" :to="{name: 'config'}">
-              <i class="icofont-ui-settings"></i>
-              Config
-            </q-route-tab>
-        </q-tabs>
-    </q-layout-footer>
+  <q-footer class="flex fixed-bottom" :class="isDarkActive ? 'q-footer-dark' : 'q-footer'">
+    <q-tabs :class="!isDarkActive ? 'text-dark' : 'text-white'" indicator-color="transparent">
+      <q-route-tab name="home" to="/" exact>
+        <i class="las la-home"></i>
+        Home
+      </q-route-tab>
+      <q-tab name="menu" @click="show(true)">
+        <q-btn fab icon="attach_money" color="accent"/>
+      </q-tab>
+      <q-route-tab name="config" to="/config" exact>
+        <i class="las la-tools"></i>
+        Config
+      </q-route-tab>
+    </q-tabs>
+  </q-footer>
 </template>
 
 <script>
-import { QTabs, QTab, QRouteTab } from 'quasar'
-export default {
+import { QTabs, QTab, QRouteTab, QFooter } from 'quasar'
+import { defineComponent, ref, inject } from 'vue'
+import { useRouter } from 'vue-router'
+import { configStore } from '../store/modules/configStore'
+import { contaStore } from '../store/modules/contaStore'
+import useFilters from '../composables/useFilters'
+export default defineComponent({
   name: 'BottomNavigation',
-  data () {
-    return {
-      tab: 'mails'
-    }
-  },
   components: {
     QTabs,
     QTab,
-    QRouteTab
+    QRouteTab,
+    QFooter
   },
-  methods: {
-    show (grid) {
-      this.$q.bottomSheet({
-        message: '\n',
-        grid,
-        actions: [
-          {
-            label: 'Drive',
-            icon: 'share',
-            id: 'drive'
-          },
-          {
-            label: 'Keep',
-            img: 'https://cdn.quasar.dev/img/logo_keep_128px.png',
-            id: 'keep'
-          },
-          {
-            label: 'Google Hangouts',
-            img: 'https://cdn.quasar.dev/img/logo_hangouts_128px.png',
-            id: 'calendar'
-          },
-          {
-            label: 'Calendar',
-            img: 'https://cdn.quasar.dev/img/logo_calendar_128px.png',
-            id: 'calendar'
-          }
-        ]
-      }).onOk(action => {
+  setup () {
+    const $root = inject('$root')
 
-      }).onCancel(() => {
+    const router = useRouter()
 
-      }).onDismiss(() => {
+    const { darkMode } = configStore()
+    const storeConta = contaStore()
 
-      })
+    const isDarkActive = ref(darkMode)
+
+    const tab = ref('home')
+
+    const { currency } = useFilters()
+
+    const show = () => {
+      const total = currency(parseFloat(storeConta.totalList) || 0.00)
+      $root.refs.modalTotal.show(total)
+    }
+
+    const irPara = (rota) => {
+      router.push({ name: rota })
+    }
+
+    return {
+      tab,
+      isDarkActive,
+      show,
+      irPara
     }
   }
-}
+})
 </script>
 
-<style lang="stylus">
-.flex {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
+<style lang="scss" scoped>
+.q-footer {
+    background: #fff;
+    border-top: 1px solid #ccc;
 }
-.text-teal {
-  background-color: #fff;
-  box-shadow: 0px 1px 3px #808080;
-  border-radius: 15px;
-  color: #6c5af8 !important;
-  position: absolute;
-  bottom: 0;
-  width: 328px;
-  margin-bottom: 10px;
+.q-footer-dark {
+    background: var(--q-dark) !important;
+    border-top: 1px solid #ccc;
 }
-.bg-accent {
-  background: #6c5af8 !important;
+.text-dark {
+  color: var(--q-dark) !important;
+  width: 100%;
 }
-.q-bottom-sheet {
-    border-radius: 30px 30px 0px 0px !important;
+.text-white {
+  color: var(--q-white) !important;
+  width: 100%;
 }
-.q-card__section .q-dialog__message .scroll {
-    text-align: center !important;
-}
-
-.q-dialog__message {
-    text-align: center;
-}
-
-.q-dialog__message::after{
-    content: '';
-    border: 2px solid #000;
-    border-radius: 6px;
-    display: flex;
-    width: 80px;
-    margin: 0 auto;
+.q-dialog-plugin {
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
 }
 </style>

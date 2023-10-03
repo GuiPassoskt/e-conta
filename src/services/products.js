@@ -1,4 +1,4 @@
-import { api } from './api'
+import { api } from '../boot/axios'
 
 export default {
   create: (data) => {

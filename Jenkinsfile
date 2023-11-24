@@ -5,6 +5,7 @@ pipeline {
         stage('Clone') {
             steps {
                 echo 'Clone..'
+                sh 'mkdir -p build'
                 script {
                   git credentialsId: 'jenkins-user-github', url: 'https://github.com/GuiPassoskt/e-conta.git'
                   sh 'ls -lart ./*'

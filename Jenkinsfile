@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone Sources') {
+          steps {
+            git 'https://github.com/GuiPassoskt/e-conta.git'
+          }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'

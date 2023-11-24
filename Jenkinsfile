@@ -5,7 +5,7 @@ node {
         stage('Clone') {
             steps {
                 echo 'Clone..'
-                sh 'mkdir -p build'
+                sh 'mkdir build'
                 script {
                   git credentialsId: 'jenkins-user-github', url: 'https://github.com/GuiPassoskt/e-conta.git'
                   sh 'ls -lart ./*'

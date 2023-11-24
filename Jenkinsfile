@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 agent {
-                  docker { image 'nodejs' }
+                  docker { image 'node' }
                 }
                 sh 'npm install && npm run pwa'
             }

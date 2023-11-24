@@ -2,16 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Sources') {
-          steps {
-            git 'https://github.com/GuiPassoskt/e-conta.git'
-          }
-        }
         stage('Build') {
             steps {
                 echo 'Building..'
                 agent {
-                  docker { image 'node' }
+                  docker {
+                      image 'node:10-alpine'
+                      args '-p 4000:4000'
+                  }
                 }
                 sh 'npm install && npm run pwa'
             }

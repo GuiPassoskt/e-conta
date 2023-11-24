@@ -4,22 +4,28 @@ pipeline {
     tools {nodejs "node"}
   
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                sh 'npm install'
-                sh 'quasar build'
-            }
+        stage('Cloning Git') {
+          steps {
+            git 'https://github.com/GuiPassoskt/e-conta.git'
+          }
         }
+        
+        stage('Install dependencies') {
+          steps {
+            sh 'npm install'
+          }
+        }
+         
         stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
+          steps {
+             sh 'npm test'
+          }
         }
+
         stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
+          steps {
+             echo "Deploy..."
+          }
         }
     }
 }

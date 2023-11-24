@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone') {
+            steps {
+                echo 'Clone..'
+                sh 'git clone https://github.com/GuiPassoskt/e-conta.git'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'

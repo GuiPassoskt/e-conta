@@ -5,7 +5,10 @@ pipeline {
         stage('Clone') {
             steps {
                 echo 'Clone..'
-                sh 'git https://github.com/GuiPassoskt/e-conta.git'
+                script {
+                  git url: 'https://github.com/GuiPassoskt/e-conta.git'
+                  sh 'ls'
+                }
             }
         }
         stage('Build') {

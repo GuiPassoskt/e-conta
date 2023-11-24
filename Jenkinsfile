@@ -3,7 +3,6 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent node
             steps {
                 echo 'Building..'
                 sh 'npm install && npm run pwa'

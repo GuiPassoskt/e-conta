@@ -11,7 +11,7 @@ pipeline {
                       args '-p 4000:4000'
                   }
                 }
-                sh 'npm install && npm run pwa'
+                sh 'npm install'
             }
         }
         stage('Test') {

@@ -18,14 +18,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        success {
-
-        }
-
-        failure {
-            
-        }
-    }
 }

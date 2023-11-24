@@ -6,8 +6,8 @@ pipeline {
             steps {
                 echo 'Clone..'
                 script {
-                  git url: 'https://github.com/GuiPassoskt/e-conta.git'
-                  sh 'ls'
+                  git credentialsId: 'jenkins-user-github', url: 'https://github.com/GuiPassoskt/e-conta.git'
+                  sh 'ls -lart ./*'
                 }
             }
         }

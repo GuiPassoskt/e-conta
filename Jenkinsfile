@@ -1,18 +1,5 @@
-def container
-def commit
-def commitChangeset
-def url
-
 pipeline {
     agent any
-
-    options {
-
-    }
-
-    environment {
-
-    }
 
     stages {
         stage('Build') {

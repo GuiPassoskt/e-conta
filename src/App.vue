@@ -36,9 +36,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style>
-/* #q-app{
-  background: #edf3f8;
-} */
-</style>

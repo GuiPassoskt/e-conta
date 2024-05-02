@@ -78,7 +78,7 @@ export default defineComponent({
       }
     }
 
-    const show = (grid = false, item) => {
+    const show = (grid = false, item = null) => {
       $q.bottomSheet({
         message: 'Selecione uma opção',
         grid,

@@ -31,7 +31,7 @@
       <q-img class="absolute-top" style='background-size: cover; background-position: 50% 50%;height: 150px'>
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="60px" class="q-mb-sm avatar">
-            <img src="~/assets/eu.jpg" style="object-fit:cover;">
+            <img src="~/assets/eu.jpg" style="object-fit:cover;" alt="avatar">
           </q-avatar>
           <div class="text-weight-bold">Guilherme Passos</div>
           <div>decodezero.io@gmail.com</div>

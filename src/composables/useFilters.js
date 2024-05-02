@@ -7,7 +7,7 @@ const currency = (value) => {
 
 const percent = (value, base, toFixed = 2) => {
   if (base === 0) return 100
-  return ((value / base) * 100).toFixed(toFixed)
+  return parseFloat(((value / base) * 100).toFixed(toFixed))
 }
 
 const monetize = (value) => {

@@ -49,10 +49,10 @@ export const contaStore = defineStore('conta', {
     totalList: state => {
       const array = state.list.map(item => parseFloat(item.amount) * item.quantity)
       if (array.length > 0) {
-        const total = array.reduce((total, i) => total + i)
-        return total.toFixed(2) || 0
+        const total = array.reduce((total, i) => total + i, 0)
+        return total.toFixed(2) || '0'
       } else {
-        return 0
+        return '0'
       }
     },
 

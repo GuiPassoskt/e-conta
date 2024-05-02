@@ -9,7 +9,7 @@ const modules = {
   Config
 }
 
-export default store((/* { ssrContext } */) => {
+export default store(() => {
   const store = createStore({
     modules
   })

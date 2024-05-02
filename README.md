@@ -24,3 +24,12 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+
+### Configure Sonar in Docker
+```bash
+docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:10.5.1-community
+```
+
+
+
+

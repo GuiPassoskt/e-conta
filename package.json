@@ -16,7 +16,7 @@
   "dependencies": {
     "@quasar/cli": "^2.4.1",
     "@quasar/extras": "^1.16.11",
-    "axios": "^1.6.8",
+    "axios": "^1.16.0",
     "core-js": "^3.6.5",
     "localbase": "^0.7.5",
     "pinia": "^2.0.16",
